@@ -2,5 +2,8 @@
   "cSpell.words": [
     "fastify",
     "todos"
-  ]
+  ],
+  "vs-kubernetes": {
+    "disable-linters": ["resource-limits"],
+  },
 }

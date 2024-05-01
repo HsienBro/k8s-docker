@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/hsienbro/backend:latest
+          ports:
+          - containerPort: 8888
+          env:
+            - name: PORT
+              value: "8888"
+            - name: HOST
+              value: 0.0.0.0
+            - name: MONGO_CONNECTION_STRING
+              value: mongodb://my-mongo.default.svc.cluster.local:27017/myMernApp
+          livenessProbe: 
+            httpGet:
+              path: /healthz
+              port: 8888
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          
