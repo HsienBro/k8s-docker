@@ -24,13 +24,6 @@ spec:
               value: 0.0.0.0
             - name: MONGO_CONNECTION_STRING
               value: mongodb://my-mongo:27017/myMernApp
-          resources:
-            requests:
-              cpu: 10m
-              memory: 10Mi
-            limits:
-              cpu: 500m
-              memory: 500Mi
           livenessProbe: 
             httpGet:
               path: /healthz
