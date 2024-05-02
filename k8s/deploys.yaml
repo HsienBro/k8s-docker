@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/hsienbro/backend:latest
+          ports:
+          - containerPort: 8888
+          env:
+            - name: PORT
+              value: "8888"
+            - name: HOST
+              value: 0.0.0.0
+            - name: MONGO_CONNECTION_STRING
+              value: mongodb://my-mongo:27017/myMernApp
+          resources:
+            requests:
+              cpu: 10m
+              memory: 10Mi
+            limits:
+              cpu: 500m
+              memory: 500Mi
+          livenessProbe: 
+            httpGet:
+              path: /healthz
+              port: 8888
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/hsienbro/frontend:latest
+          ports:
+            - containerPort: 5173
+          livenessProbe: 
+            httpGet:
+              path: /healthz
+              port: 5173
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: deploy-mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: my-mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          resources:
+            requests:
+              cpu: 10m
+              memory: 10Mi
+            limits:
+              cpu: 200m
+              memory: 200Mi
+          livenessProbe: 
+            httpGet:
+              path: /healthz
+              port: 27017
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            
