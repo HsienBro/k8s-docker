@@ -26,10 +26,10 @@ spec:
               value: mongodb://my-mongo:27017/myMernApp
           livenessProbe: 
             httpGet:
-              path: /healthz
+              path: /ping
               port: 8888
-            initialDelaySeconds: 10
-            periodSeconds: 5
+            initialDelaySeconds: 15
+            periodSeconds: 10
 
 ---
 apiVersion: apps/v1
@@ -53,7 +53,7 @@ spec:
             - containerPort: 5173
           livenessProbe: 
             httpGet:
-              path: /healthz
+              path: /
               port: 5173
             initialDelaySeconds: 10
             periodSeconds: 5
@@ -87,7 +87,7 @@ spec:
               memory: 200Mi
           livenessProbe: 
             httpGet:
-              path: /healthz
+              path: /
               port: 27017
             initialDelaySeconds: 10
             periodSeconds: 5
