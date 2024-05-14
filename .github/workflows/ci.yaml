@@ -1,0 +1,34 @@
+name: CI workflow
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  CI_work:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.12.0'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run unit Test
+      run: npm run test 
+
+    - name: Archive coverage results
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage
+      
+    
