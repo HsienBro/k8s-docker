@@ -25,3 +25,5 @@ export const serverStart: (appConfig: AppConfig) => (server: FastifyInstance) =>
     await server.listen(listenOptions)
     return server
   }
+
+  
