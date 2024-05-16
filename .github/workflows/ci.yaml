@@ -96,11 +96,11 @@ jobs:
       id: check_format
       run: |
         if ! npx prettier --check **.js; then
-          echo "::set-output name=formatted::true"
+          echo 'formatted=true' >> $GITHUB_ENV
         fi
 
     - name: Format and commit files
-      if: steps.check_format.outputs.formatted == 'true'
+      if: env.formatted == 'true'
       run: |
         npm run format
         git config --global user.name 'HsienBro'
