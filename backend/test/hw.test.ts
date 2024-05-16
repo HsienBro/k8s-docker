@@ -22,8 +22,19 @@ describe('Testing createTodo from Todo Api', () => {
   })
 })
 
+
+describe ('Testing fastify header and msg', () => {
+    const server = serverOf()
+
+    test ('when send a request ot /ping, it has a header <test/server> and should send <pong>', async () => {
+        const response = await server.inject({
+            method: 'GET',
+            url: '/ping'
+        })
+
 describe('Testing fastify header and msg', () => {
   const server = serverOf()
+
 
   test('when send a request ot /ping, it has a header <test/server> and should send <pong>', async () => {
     const response = await server.inject({
