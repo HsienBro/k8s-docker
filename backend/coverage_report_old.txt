@@ -1,0 +1,35 @@
+
+> backend@1.0.0 test
+> vitest run --coverage
+
+
+ RUN  v1.4.0 /workspaces/k8s-docker/backend
+      Coverage enabled with v8
+
+ ✓ test/todo.spec.ts  (1 test) 22ms
+ ✓ test/server.test.ts  (1 test) 19ms
+
+ Test Files  2 passed (2)
+      Tests  2 passed (2)
+   Start at  16:33:19
+   Duration  1.37s (transform 140ms, setup 0ms, collect 796ms, tests 41ms, environment 1ms, prepare 194ms)
+
+ % Coverage report from v8
+--------------|---------|----------|---------|---------|------------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s      
+--------------|---------|----------|---------|---------|------------------------
+All files     |   58.28 |    71.42 |   23.07 |   58.28 |                        
+ src          |   39.58 |    66.66 |   33.33 |   39.58 |                        
+  index.ts    |       0 |        0 |       0 |       0 | 1-21                   
+  server.ts   |   70.37 |      100 |      50 |   70.37 | 20-27                  
+ src/models   |     100 |      100 |     100 |     100 |                        
+  todo.ts     |     100 |      100 |     100 |     100 |                        
+ src/plugins  |     100 |      100 |       0 |     100 |                        
+  mongodb.ts  |     100 |      100 |       0 |     100 |                        
+ src/repo     |   85.71 |      100 |       0 |   85.71 |                        
+  todo.ts     |   85.71 |      100 |       0 |   85.71 | 11,14                  
+ src/routes   |   46.26 |    66.66 |     100 |   46.26 |                        
+  todo.ts     |   46.26 |    66.66 |     100 |   46.26 | ...1,25-32,36-48,52-63 
+ src/services |      56 |      100 |      25 |      56 |                        
+  todo.ts     |      56 |      100 |      25 |      56 | 12-16,19-21,23-25      
+--------------|---------|----------|---------|---------|------------------------

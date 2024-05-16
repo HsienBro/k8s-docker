@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "format": "prettier --write **.ts",
+    "check": "prettier --check **.ts"
+  },
+  "devDependencies": {
+    "prettier": "3.2.5"
+  }
+}
