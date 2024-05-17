@@ -18,6 +18,7 @@ jobs:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         KEY: ${{ secrets.SSHKEY }}
+        passphrase: ${{ secrets.SSHKEYPASSWORD }}
         script: | 
           cd k8s-docker
 
