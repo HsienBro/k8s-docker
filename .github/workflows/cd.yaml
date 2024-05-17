@@ -22,4 +22,3 @@ jobs:
         key: ${{ secrets.SSHKEY }}
         pass: ${{ secrets.SSHKEYPASSWORD }}
 
-
