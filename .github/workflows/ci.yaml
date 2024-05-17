@@ -95,7 +95,7 @@ jobs:
     - name: Check if files are formatted
       id: check_format
       run: |
-        if ! npx prettier --check **.js; then
+        if ! npx prettier --check **.ts; then
           echo 'formatted=true' >> $GITHUB_ENV
         fi
 
