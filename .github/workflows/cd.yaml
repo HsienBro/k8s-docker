@@ -10,10 +10,10 @@ jobs:
   Update_code:
     runs-on: ubuntu-latest
     steps: 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
     
     - name: update by ssh
-      uses: appleboy/ssh-action@master
+      uses: appleboy/ssh-action@v0.1.3
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
