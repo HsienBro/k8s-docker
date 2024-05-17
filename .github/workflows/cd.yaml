@@ -1,4 +1,4 @@
-name: Deployment
+name: CD workflow
 
 on: 
   push:
@@ -20,5 +20,5 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: | 
           cd k8s-docker
-          ${{ secrets.SCRIPT }}
+          
           
