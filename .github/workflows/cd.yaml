@@ -12,15 +12,14 @@ jobs:
     steps: 
     - uses: actions/checkout@v2
     
-    - name: update by ssh
-      uses: appleboy/ssh-action@v0.1.4
+    - name: connect to ssh
+      uses: fifsky/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        KEY: ${{ secrets.SSHKEY }}
-        passphrase: ${{ secrets.SSHKEYPASSWORD }}
-        script: | 
+        command: |
           cd k8s-docker
-
+        host: ${{ secrets.HOST }}
+        user: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSHKEY }}
+        pass: ${{ secrets.SSHPASSWORD }}
 
 
