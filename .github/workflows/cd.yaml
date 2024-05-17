@@ -1,0 +1,22 @@
+name: Deployment
+
+on: 
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  Update_code:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: update by ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        KEY: ${{ secrets.SSHKEY }}
+        script: | 
+          cd k8s-docker
+          ${{ secrets.SCRIPT }}
+          
