@@ -12,14 +12,13 @@ jobs:
     steps: 
     - uses: actions/checkout@v2
     
-    - name: connect to ssh
-      uses: appleboy/ssh-action@master
+    - name: ls -a via OPEN SSH Private Key
+      uses: fifsky/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        # PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        PASSWORD: ${{ secrets.SSHKEYPASSWORD }}
-        script: | 
+        command: |
           cd k8s-docker
+        host: ${{ secrets.HOST }}
+        user: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSHKEY }}
+        pass: ${{ secrets.SSHKEYPASSWORD }}
 
