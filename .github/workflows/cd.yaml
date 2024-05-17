@@ -21,4 +21,5 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: |
           cd k8s-docker
+          git pull origin master
 
