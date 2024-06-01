@@ -48,6 +48,9 @@ jobs:
         script: |
           cd k8s-docker
           git pull origin master
-          
+          sudo docker pull ghcr.io/hsienbro/frontend:latest
+          sudo docker pull ghcr.io/hsienbro/backend:latest
+          sudo docker-compose up -d
+          sudo docker-compose down
         
 
